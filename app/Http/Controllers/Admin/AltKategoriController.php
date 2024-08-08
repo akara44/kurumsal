@@ -167,5 +167,12 @@ class AltKategoriController extends Controller
         
             return Redirect()->back()->with($mesaj);
         }
+
+        public function AltAjax($kategori_id) {
+
+                 $altgetir = AltKategoriler::where('kategori_id',$kategori_id)->orderBy('altkategori_adi', 'ASC')->get();
+                 return json_encode($altgetir);
+
+        }
         
     }// class bitti

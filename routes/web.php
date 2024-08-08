@@ -46,6 +46,7 @@ Route::controller(AltKategoriController::class)->group(function(){
     Route::get('/altkategori/duzenle/{id}', 'AltKategoriDuzenle')->name('altkategori.duzenle');
     Route::post('/altkategori/guncelle/form', 'AltKategoriForm')->name('alt.guncelle');
     Route::get('/altkategori/sil/{id}', 'AltKategoriSil')->name('altkategori.sil');
+    Route::get('/altkategoriler/ajax/{kategori_id}', 'AltAjax');
 });
 
 // Ürünler

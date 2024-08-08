@@ -178,4 +178,29 @@
         });
     });
 </script>
+   
+<script>
+     $(document).ready(
+        function(params) {
+            $('select[name="kategori_id"]').on('change', function() {
+                var kategori_id = $(this).val();
+                if (kategori_id) {
+                    $.ajax({
+                        url: "{{ url('/altkategoriler/ajax') }}/" + kategori_id,
+                        type: "GET",
+                        dataType: "json",
+                        success:function(data) {
+                            $('select[name="altkategori_id"]').html('');
+                            var alt = $('select[name="altkategori_id"]').empty();
+                            $.each(data,function(key, value) {
+                                $('select[name="altkategori_id"]').append('<option value="'+ value.id +'"> '+ value.altkategori_adi +'</option>');
+                            });
+                        },
+                    });
+                }else{
+                    alert('danger');
+                }
+            })
+    })
+</script>
 @endsection
