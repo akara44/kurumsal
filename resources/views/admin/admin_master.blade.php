@@ -29,6 +29,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!-- bildiri -->
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" integrity="sha512-xmGTNt20S0t62wHLmQec2DauG9T+owP9e6VU8GigI0anN7OXLip9i7IwEhelasml2osdxX71XcYm6BQunTQeQg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     </head>
 
     <body data-topbar="dark">
@@ -133,14 +135,17 @@
     <!-- sweetalert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="{{ asset( 'backend/assets/js/sweet.js') }}"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha512-9UR1ynHntZdqHnwXKTaOm1s6V9fExqejKvg5XMawEMToW4sSw+3jtLrYfZPijvnwnnE8Uol1O9BcAskoxgec+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- validate -->
-    <script src="{{ asset( 'backend/assets/js/validate.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
+       <!--tinymce js-->
+        <script src="{{ asset('backend/assets/libs/tinymce/tinymce.min.js') }}"></script>
+
+        <!-- init js -->
+        <script src="{{ asset('backend/assets/js/pages/form-editor.init.js') }}"></script>
 
 
 </html>
-
-<script>
 
 
 
@@ -185,4 +190,22 @@
     });
 });
 
+</script>
+
+<script>
+$(function() {
+    $('.urunler').change(function(){
+        var durum = $(this).prop('checked') == true ? 1 : 0;
+        var urun_id = $(this).data('id');
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: '/urun/durum',
+            data: {'durum': durum, 'urun_id': urun_id},
+            success: function(data){
+                console.log(data.success)
+            }
+        });
+    });
+});
 </script>

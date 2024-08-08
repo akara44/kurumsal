@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\UrunController;
 use App\Http\Controllers\Home\BannerController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\AltKategoriController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +46,15 @@ Route::controller(AltKategoriController::class)->group(function(){
     Route::get('/altkategori/duzenle/{id}', 'AltKategoriDuzenle')->name('altkategori.duzenle');
     Route::post('/altkategori/guncelle/form', 'AltKategoriForm')->name('alt.guncelle');
     Route::get('/altkategori/sil/{id}', 'AltKategoriSil')->name('altkategori.sil');
+});
+
+// Ürünler
+Route::controller(UrunController::class)->group(function(){
+    Route::get('/urun/liste', 'UrunListe')->name('urun.liste');
+    Route::get('/urun/ekle', 'UrunEkle')->name('urun.ekle');
+    // Route::post('/altkategori/ekle/form', 'AltKategoriEkleForm')->name('altkategori.ekle.form');
+        Route::get('/urun/durum', 'UrunDurum');
+
 });
 
 

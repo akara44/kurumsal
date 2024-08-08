@@ -54,7 +54,7 @@
                                     <div class="row mb-3">
                                         <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                                         <div class="col-sm-10">
-                                            <img class="rounded avatar-lg" src="{{ (!empty($homebanner->resim)) ? url('upload/banner/'.$homebanner->resim): url('upload/resim-yok.png') }}" alt="" id="resimGoster">
+                                           <img class="rounded avatar-lg" src="{{ url('upload/resim-yok.png') }}" alt="" id="resimGoster">
                                         </div>
                                     </div>
                                     <input type="submit" class="btn btn-info waves-effect waves-light" value="Güncelle">

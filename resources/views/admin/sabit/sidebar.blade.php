@@ -50,6 +50,20 @@
                                 </ul>
                             </li>
 
+                              <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="ri-layout-3-line"></i>
+                                    <span>Ürünler</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="true">
+                                    <li>
+                                            <li><a href="{{ route('urun.liste') }}">Liste</a></li>
+                                            <li><a href="{{ route('urun.ekle')}}">Ürün Ekle</a></li>
+                                    </li>
+                                </ul>
+                            </li>
+
+
                            <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                                     <i class="ri-layout-3-line"></i>
