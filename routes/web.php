@@ -53,8 +53,8 @@ Route::controller(AltKategoriController::class)->group(function(){
 Route::controller(UrunController::class)->group(function(){
     Route::get('/urun/liste', 'UrunListe')->name('urun.liste');
     Route::get('/urun/ekle', 'UrunEkle')->name('urun.ekle');
-    // Route::post('/altkategori/ekle/form', 'AltKategoriEkleForm')->name('altkategori.ekle.form');
-        Route::get('/urun/durum', 'UrunDurum');
+    Route::post('/urun/ekle/form', 'UrunEkleForm')->name('urun.ekle.form');
+    Route::get('/urun/durum', 'UrunDurum');
 
 });
 

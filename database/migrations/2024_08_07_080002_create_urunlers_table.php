@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('tag')->nullable();
             $table->string('anahtar')->nullable();
             $table->string('aciklama')->nullable();
-            $table->string('metin')->nullable();
+            $table->text('metin')->nullable();
             $table->string('resim')->nullable();
             $table->boolen('durum')->default(0);
             $table->integer('sirano')->default(1);

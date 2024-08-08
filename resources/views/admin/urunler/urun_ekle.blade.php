@@ -19,7 +19,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Ürün Ekle</h4>
-                        <form method="post" action="{{ route('altkategori.ekle.form') }}" enctype="multipart/form-data" id="myForm">
+                        <form method="post" action="{{ route('urun.ekle.form') }}" enctype="multipart/form-data" id="myForm">
                             @csrf
                             <div class="col-md-12">
                                 <div class="row">
@@ -137,13 +137,7 @@
     $(document).ready(function (){
         $('#myForm').validate({
             rules: {
-                altkategori_adi: {
-                    required: true,
-                },
-                anahtar: {
-                    required: true,
-                },
-                aciklama: {
+                altkategori_id: {
                     required: true,
                 },
                 resim: {
@@ -151,17 +145,11 @@
                 },
             },
             messages: {
-                altkategori_adi: {
-                    required: 'Alt Kategori adı giriniz',
-                },
-                anahtar: {
-                    required: 'Anahtar giriniz',
-                },
-                aciklama: {
-                    required: 'Açıklama giriniz',
+                altkategori_id: {
+                    required: 'Alt Kategori Seçiniz.',
                 },
                 resim: {
-                    required: 'Resim giriniz',
+                    required: 'Resim Seçiniz.',
                 },
             },
             errorElement: 'span',
