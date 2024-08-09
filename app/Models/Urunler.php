@@ -9,4 +9,9 @@ class Urunler extends Model
 {
     use HasFactory;
     protected $guarded = [];  
+
+    public function Altkategori(){
+        
+        return $this->belongsTo(Altkategoriler::class , 'altkategori_id', 'id');
+    }
 }

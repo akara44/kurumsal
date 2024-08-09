@@ -54,6 +54,9 @@ Route::controller(UrunController::class)->group(function(){
     Route::get('/urun/liste', 'UrunListe')->name('urun.liste');
     Route::get('/urun/ekle', 'UrunEkle')->name('urun.ekle');
     Route::post('/urun/ekle/form', 'UrunEkleForm')->name('urun.ekle.form');
+    Route::get('/urun/duzenle/{id}', 'UrunDuzenle')->name('urun.duzenle');
+     Route::post('/urun/guncelle/form', 'UrunGuncelle')->name('urun.guncelle.form');
+     Route::get('/urun/sil/{id}', 'UrunSil')->name('urun.sil');
     Route::get('/urun/durum', 'UrunDurum');
 
 });

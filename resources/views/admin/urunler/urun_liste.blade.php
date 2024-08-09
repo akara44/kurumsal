@@ -36,15 +36,15 @@
                                 <tr>
                                     <th>{{ $loop->iteration }}</th>
                                     <th>{{ $urunler->baslik }}</th>
-                                    <th>Altkategori</th>
+                                    <th>{{ $urunler->Altkategori ? $urunler->Altkategori->altkategori_adi : 'Alt kategori bulunamadı' }}</th>
                                     <th><img src="{{ (!empty($urunler->resim)) ? url($urunler->resim) : url('upload/resim-yok.png') }}" style="height: 50px; width: 50px;" alt=""></th>
                                     <th>
                                         <input type="checkbox" class="urunler" data-id="{{ $urunler->id }}" id="{{ $urunler->id }}" switch="success" {{ $urunler->durum ? 'checked' : '' }}> 
                                         <label for="{{ $urunler->id }}" data-on-label="Yes" data-off-label="No"></label>
                                     </th>
                                     <th>
-                                        <a href="{{ route('altkategori.duzenle', $urunler->id) }}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
-                                        <a href="{{ route('altkategori.sil', $urunler->id) }}" class="btn btn-danger sm" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="{{ route('urun.duzenle', $urunler->id) }}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
+                                        <a href="{{ route('urun.sil', $urunler->id) }}" class="btn btn-danger sm" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
                                     </th>
                                 </tr>
                                 @endforeach

@@ -18,16 +18,20 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Ürün Ekle</h4>
-                        <form method="post" action="{{ route('urun.ekle.form') }}" enctype="multipart/form-data" id="myForm">
+                        <h4 class="card-title">Ürün Düzenle</h4>
+                        <form method="post" action="{{ route('urun.guncelle.form') }}" enctype="multipart/form-data" id="myForm">
                             @csrf
+
+                            
+                                     <input type="hidden" name="id" value="{{ $urunler->id }}">
+                                     <input type="hidden" name="onceki_resim" value="{{ $urunler->resim }}">
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="row mb-3">
                                             <label for="example-text-input" class="col-sm-2 col-form-label">Başlık</label>
                                             <div class="col-sm-12 form-group">
-                                                <input class="form-control" name="baslik" type="text" placeholder="Başlık">
+                                                <input class="form-control" name="baslik" type="text" placeholder="Başlık" value="{{ $urunler->baslik }}">
                                                 @error('baslik')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -37,14 +41,14 @@
                                         <div class="row mb-3">
                                             <label for="example-text-input" class="col-sm-2 col-form-label">Tag</label>
                                             <div class="col-sm-12 form-group">
-                                                <input class="form-control" name="tag" type="text" data-role="tagsinput" value="Editör,Laravel">
+                                                <input class="form-control" name="tag" type="text" data-role="tagsinput" value="{{ $urunler->tag }}">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <div class="col-sm-12 form-group">
-                                                <label for="example-text-input" class="col-sm-2 col-form-label">Mesaj</label>
-                                                <textarea name="metin" id="elm1" type="text"></textarea>
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">Metin</label>
+                                                <textarea name="metin" id="elm1" type="text">{{ $urunler->metin }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -56,7 +60,7 @@
                                                 <select class="form-select" aria-label="Default select example" name="kategori_id">
                                                     <option selected="">Kategori Seç</option>
                                                     @foreach($kategoriler as $kategori)
-                                                        <option value="{{ $kategori->id }}">{{ $kategori->kategori_adi }}</option>
+                                                        <option value="{{ $kategori->id }}" {{ $kategori->id == $urunler->kategori_id ? 'selected' : '' }}>{{ $kategori->kategori_adi }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -66,7 +70,11 @@
                                             <label for="example-text-input" class="col-form-label">Alt Kategori Adı</label>
                                             <div class="col-sm-12 form-group">
                                                 <select class="form-select" aria-label="default select example" name="altkategori_id">
-                                                    <option></option>
+                                                     
+                                                <option></option>
+                                                @foreach($altkategoriler as $altkategori)
+                                                <option value="{{ $altkategori->id }}" {{ $altkategori->id == $urunler->altkategori_id ? 'selected' : '' }}>{{ $altkategori->altkategori_adi }}</option>
+                                                @endforeach
                                                 </select>
                                                 @error('altkategori_adi')
                                                     <span class="text-danger">{{ $message }}</span>
@@ -77,7 +85,7 @@
                                         <div class="row mb-3">
                                             <label for="example-text-input" class="col-form-label">Sıra No</label>
                                             <div class="col-sm-12 form-group">
-                                                <input class="form-control" name="sirano" type="number" placeholder="Sıra No" value="1">
+                                                <input class="form-control" name="sirano" type="number" placeholder="Sıra No" value="{{ $urunler->sirano }}">
                                             </div>
                                         </div>
 
@@ -91,26 +99,26 @@
                                         <div class="row mb-3">
                                             <label for="example-text-input"></label>
                                             <div class="col-sm-12">
-                                                <img class="rounded avatar-lg" src="{{ url('upload/resim-yok.png') }}" alt="" id="resimGoster">
+                                                    <img class="rounded avatar-lg" src="{{ (!empty($urunler->resim)) ? url($urunler->resim): url('upload/resim-yok.png') }}" alt="" id="resimGoster">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="example-text-input" class="col-form-label">Anahtar</label>
                                             <div class="col-sm-12 form-group">
-                                                <input class="form-control" name="anahtar" type="text" placeholder="Anahtar">
+                                                <input class="form-control" name="anahtar" type="text" placeholder="Anahtar" value="{{ $urunler->anahtar }}">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="example-text-input" class="col-form-label">Açıklama</label>
                                             <div class="col-sm-12 form-group">
-                                                <input class="form-control" name="aciklama" type="text" placeholder="Açıklama">
+                                                <input class="form-control" name="aciklama" type="text" placeholder="Açıklama" value="{{ $urunler->aciklama }}">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <input type="submit" class="btn btn-info waves-effect waves-light" value="Ürün Ekle">
+                                    <input type="submit" class="btn btn-info waves-effect waves-light" value="Ürün Düzenle">
                                 </div>
                             </div>
                         </form>
@@ -140,7 +148,7 @@
                 altkategori_id: {
                     required: true,
                 },
-                resim: {
+                sirano: {
                     required: true,
                 },
             },
@@ -148,8 +156,8 @@
                 altkategori_id: {
                     required: 'Alt Kategori Seçiniz.',
                 },
-                resim: {
-                    required: 'Resim Seçiniz.',
+                sirano: {
+                    required: 'Sıra No Giriniz.',
                 },
             },
             errorElement: 'span',
