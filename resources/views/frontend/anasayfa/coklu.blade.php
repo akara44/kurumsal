@@ -7,8 +7,8 @@ $urunler = App\Models\Urunler::where('durum',1)->orderBy('sirano','ASC')->get();
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-8">
                             <div class="section__title text-center">
-                                <span class="sub-title">04 - Servislerimiz</span>
-                                <h2 class="title">All creative work</h2>
+                                <span class="sub-title">04 - Ürünlerimiz</span>
+                                <h2 class="title">Servislerimiz</h2>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@ $urunler = App\Models\Urunler::where('durum',1)->orderBy('sirano','ASC')->get();
                                 <div class="col">
                                     <div class="portfolio__active">
                                     @php     
-                                 $urunkategori = App\Models\Urunler::where('kategori_id', $kategori->id)->orderBy('sirano', 'ASC')->get();
+                                 $urunkategori = App\Models\Urunler::where('kategori_id', $kategori->id)->where('durum',1)->orderBy('sirano', 'ASC')->get();
                                     @endphp
                                     @forelse($urunkategori as $urunler)
                                         <div class="portfolio__item">
