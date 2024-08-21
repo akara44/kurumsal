@@ -25,7 +25,7 @@ $homebanner = App\Models\Banner::find(1);
                 <div class="scroll__down">
                     <a href="#aboutSection" class="scroll__link">Aşağıya</a>
                 </div>
-                <div class="banner__video">
+                <div class="banner__video"> 
                     <a href="{{ $homebanner->video_url }}" class="popup-video"><i class="fas fa-play"></i></a>  
                 </div>
             </section>
