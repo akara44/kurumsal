@@ -94,7 +94,7 @@ class UrunController extends Controller
                 $resim_path = 'upload/urunler/'.$resimadi;
     
                 // Save the resized image
-                Image::make($resim)->resize(700, 370)->save($resim_path);
+                Image::make($resim)->resize(1020, 519)->save($resim_path);
     
                 $resim_kaydet = $resim_path;
 
