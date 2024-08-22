@@ -7,6 +7,7 @@ use App\Http\Controllers\Home\FrontController;
 use App\Http\Controllers\Home\BannerController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\AltKategoriController;
+use App\Http\Controllers\Admin\BlogkategoriController;
 
 
 /*
@@ -61,6 +62,13 @@ Route::controller(UrunController::class)->group(function(){
     Route::get('/urun/durum', 'UrunDurum');
 
 });
+
+// Bloglar
+Route::controller(BlogkategoriController::class)->group(function(){
+    Route::get('/blog/kategori/liste', 'BlogListe')->name('blog.liste');
+    Route::get('/blog/ekle', 'BlogEkle')->name('blog.ekle');
+});
+
 
 
 Route::get('/dashboard', function () {

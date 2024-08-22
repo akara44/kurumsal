@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('aciklama')->nullable();
             $table->text('metin')->nullable();
             $table->string('resim')->nullable();
-            $table->boolen('durum')->default(0);
+            $table->boolean ('durum')->default(0);
             $table->integer('sirano')->default(1);
 
             

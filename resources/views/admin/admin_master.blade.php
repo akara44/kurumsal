@@ -178,5 +178,24 @@
             });
         });
         </script>
+
+        
+        <script>
+        $(function() {
+            $('.icerikler').change(function(){
+                var durum = $(this).prop('checked') == true ? 1 : 0;
+                var urun_id = $(this).data('id');
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: '/blog/kategori/durum',
+                    data: {'durum': durum, 'urun_id': urun_id},
+                    success: function(data){
+                        console.log(data.success);
+                    }
+                });
+            });
+        });
+        </script>
     </body>
 </html>
