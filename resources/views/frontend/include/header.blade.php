@@ -7,39 +7,36 @@
                             <div class="menu__wrap">
                                 <nav class="menu__nav">
                                     <div class="logo">
-                                        <a href="index.html" class="logo__black"><img src="{{ asset('frontend/assets/img/logo/logo_black.png') }}" alt=""></a>
-                                        <a href="index.html" class="logo__white"><img src="{{ asset('frontend/assets/img/logo/logo_white.png') }}" alt=""></a>
+                                        <a href="{{ url('/') }}" class="logo__black"><img src="{{ asset('frontend/assets/img/logo/logo_black.png') }}" alt=""></a>
+                                        <a href="{{ url('/') }}" class="logo__white"><img src="{{ asset('frontend/assets/img/logo/logo_white.png') }}" alt=""></a>
                                     </div>
                                     <div class="navbar__wrap main__menu d-none d-xl-flex">
                                         <ul class="navigation">
-                                            <li class="active"><a href="index.html">Home</a></li>
+                                            <li class="active"><a href="{{ url('/') }}">Home</a></li>
                                             <li><a href="about.html">Kurumsal</a></li>
 
 @php
  $kategoriler =App\Models\Kategoriler::orderBy('kategori_adi', 'ASC')->limit(3)->get();
 @endphp
 @foreach($kategoriler as $kategori)
-
-                                            <li class="menu-item-has-children"><a href="#">{{ $kategori->kategori_adi }}</a>
-                                            @php 
-$altkategoriler=App\Models\AltKategoriler::where('kategori_id',$kategori->id)->orderBy('altkategori_adi', 'ASC')->get();
-                                            @endphp
-                                            <ul class="sub-menu">
-                                                @foreach($altkategoriler as $altkategori )
-
-
-                                             <li><a href="portfolio.html">{{ $altkategori->altkategori_adi }}</a></li>
-                                                    @endforeach
-                                                </ul>
-                                            </li>
+    <li class="menu-item-has-children"><a href="{{ url('kategori/'.$kategori->id.'/'.$kategori->kategori_url) }}">{{ $kategori->kategori_adi }}</a>
+        @php 
+        $altkategoriler = App\Models\AltKategoriler::where('kategori_id', $kategori->id)->orderBy('altkategori_adi', 'ASC')->get();
+        @endphp
+        <ul class="sub-menu">
+            @foreach($altkategoriler as $altkategori)
+                <li><a href="{{ url('altkategori/'.$altkategori->id.'/'.$altkategori->altkategori_url) }}">{{ $altkategori->altkategori_adi }}</a></li>
+            @endforeach
+        </ul>
+    </li>
 @endforeach
-                                            <li class="menu-item-has-children"><a href="#">Our Blog</a>
+                                            <li class="menu-item-has-children"><a href="#">Blog</a>
                                                 <ul class="sub-menu">
-                                                    <li><a href="blog.html">Our News</a></li>
+                                                    <li><a href="blog.html">Blog</a></li>
                                                     <li><a href="blog-details.html">News Details</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="contact.html">contact me</a></li>
+                                            <li><a href="contact.html">İletişim</a></li>
                                         </ul>
                                     </div>
                                     <div class="header__btn d-none d-md-block">

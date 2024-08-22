@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UrunController;
+use App\Http\Controllers\Home\FrontController;
 use App\Http\Controllers\Home\BannerController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\AltKategoriController;
@@ -73,5 +74,12 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+//front Controller
+
+  Route::get('/urun/{id}/{url}', [FrontController::class, 'UrunDetay']);
+  Route::get('/altkategori/{id}/{url}', [FrontController::class, 'AltDetay']);
+  Route::get('/kategori/{id}/{url}', [FrontController::class, 'KategoriDetay']);
+  
 
 
