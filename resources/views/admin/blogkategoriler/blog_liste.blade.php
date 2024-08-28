@@ -38,8 +38,8 @@
                                         <label for="{{ $bloglar->id }}" data-on-label="Yes" data-off-label="No"></label>
                                     </th>
                                     <th>
-                                        <a href="{{ route('urun.duzenle', $bloglar->id) }}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
-                                        <a href="{{ route('urun.sil', $bloglar->id) }}" class="btn btn-danger sm" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="{{ route('blog.kategori.duzenle', $bloglar->id) }}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
+                                        <a href="{{ route('blog.kategori.sil', $bloglar->id) }}" class="btn btn-danger sm" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
                                     </th>
                                 </tr>
                                 @endforeach

@@ -57,8 +57,8 @@ Route::controller(UrunController::class)->group(function(){
     Route::get('/urun/ekle', 'UrunEkle')->name('urun.ekle');
     Route::post('/urun/ekle/form', 'UrunEkleForm')->name('urun.ekle.form');
     Route::get('/urun/duzenle/{id}', 'UrunDuzenle')->name('urun.duzenle');
-     Route::post('/urun/guncelle/form', 'UrunGuncelle')->name('urun.guncelle.form');
-     Route::get('/urun/sil/{id}', 'UrunSil')->name('urun.sil');
+    Route::post('/urun/guncelle/form', 'UrunGuncelle')->name('urun.guncelle.form');
+    Route::get('/urun/sil/{id}', 'UrunSil')->name('urun.sil');
     Route::get('/urun/durum', 'UrunDurum');
 
 });
@@ -68,9 +68,13 @@ Route::controller(BlogkategoriController::class)->group(function(){
     Route::get('/blog/kategori/liste', 'BlogListe')->name('blog.liste');
     Route::get('/blog/kategori/ekle', 'BlogKategoriEkle')->name('blog.kategori.ekle');
     Route::post('/blog/kategori/form', 'BlogKategoriForm')->name('blog.kategori.form');
+    Route::get('/blog/kategori/duzenle/{id}', 'BlogKategoriDuzenle')->name('blog.kategori.duzenle');
+    Route::post('/blog/kategori/guncelle/form', 'BlogKategoriGuncelle')->name('blog.kategori.guncelle');
     Route::get('/blog/kategori/durum    ', 'BlogKategoriDurum');
+    Route::get('/blod/kategori/sil/{id}', 'BlogKategoriSil')->name('blog.kategori.sil');
 
 });
+
 
 
 
