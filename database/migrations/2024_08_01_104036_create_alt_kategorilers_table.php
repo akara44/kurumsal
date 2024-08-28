@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('anahtar')->nullable();
             $table->string('aciklama')->nullable();
             $table->string('resim')->nullable();
+            $table->boolean ('durum')->default(0);
             $table->timestamps();
         });
     }
