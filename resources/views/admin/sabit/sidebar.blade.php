@@ -64,7 +64,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li><a href="{{ route('blog.liste') }}">Liste</a></li>
-                        <li><a href="{{ route('blog.ekle') }}">Blog Ekle</a></li>
+                        <li><a href="{{ route('blog.kategori.ekle') }}">Blog Kategori Ekle</a></li>
                     </ul>
                 </li>
                 

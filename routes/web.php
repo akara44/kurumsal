@@ -62,11 +62,14 @@ Route::controller(UrunController::class)->group(function(){
     Route::get('/urun/durum', 'UrunDurum');
 
 });
-
+    
 // Bloglar
 Route::controller(BlogkategoriController::class)->group(function(){
     Route::get('/blog/kategori/liste', 'BlogListe')->name('blog.liste');
-    Route::get('/blog/ekle', 'BlogEkle')->name('blog.ekle');
+    Route::get('/blog/kategori/ekle', 'BlogKategoriEkle')->name('blog.kategori.ekle');
+    Route::post('/blog/kategori/form', 'BlogKategoriForm')->name('blog.kategori.form');
+    Route::get('/blog/kategori/durum    ', 'BlogKategoriDurum');
+
 });
 
 
