@@ -161,7 +161,7 @@
         });
         </script>
 
-        <script>
+        <!-- <script>
         $(function() {
             $('.urunler').change(function(){
                 var durum = $(this).prop('checked') == true ? 1 : 0;
@@ -232,6 +232,31 @@
                 });
             });
         });
-        </script>
+        </script> -->
+
+        <script>
+    $(function() {
+        function handleCheckboxChange(className, url) {
+            $(className).change(function(){
+                var durum = $(this).prop('checked') ? 1 : 0;
+                var urun_id = $(this).data('id');
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: url,
+                    data: {'durum': durum, 'urun_id': urun_id},
+                    success: function(data){
+                        console.log(data.success);
+                    }
+                });
+            });
+        }
+        // Kullanım
+        handleCheckboxChange('.urunler', '/urun/durum');
+        handleCheckboxChange('.icerikler', '/blog/kategori/durum');
+        handleCheckboxChange('.altkategoriler', '/altkategoriler/durum');
+        handleCheckboxChange('.kategoriler', '/kategori/durum');
+    });
+</script>
     </body>
 </html>
