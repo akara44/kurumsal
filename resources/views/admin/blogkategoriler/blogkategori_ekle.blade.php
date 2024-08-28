@@ -12,23 +12,22 @@
                         <h4 class="card-title">Blog Kategori Ekle</h4>
                         <form method="post" action="{{ route('blog.kategori.form') }}" enctype="multipart/form-data" id="myForm">
                             @csrf
-                                        <div class="row mb-3">
-                                            <label for="example-text-input" class="col-sm-2 col-form-label">Kategori Adı</label>
-                                            <div class="col-sm-12 form-group">
-                                                <input class="form-control" name="kategori_adi" type="text" placeholder="Başlık">
-                                                @error('baslik')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="example-text-input" class="col-form-label">Sıra No</label>
-                                            <div class="col-sm-12 form-group">
-                                                <input class="form-control" name="sirano" type="number" placeholder="Sıra No" value="1">
-                                            </div>
-                                        </div>
-                                    <input type="submit" class="btn btn-info waves-effect waves-light" value="Blog Kategori Ekle">
-
+                            <div class="row mb-3">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Kategori Adı</label>
+                                <div class="col-sm-12 form-group">
+                                    <input class="form-control" name="kategori_adi" type="text" placeholder="Başlık">
+                                    @error('kategori_adi')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="example-text-input" class="col-form-label">Sıra No</label>
+                                <div class="col-sm-12 form-group">
+                                    <input class="form-control" name="sirano" type="number" placeholder="Sıra No" value="1">
+                                </div>
+                            </div>
+                            <input type="submit" class="btn btn-info waves-effect waves-light" value="Blog Kategori Ekle">
                         </form>
                     </div>
                 </div>
@@ -36,6 +35,7 @@
         </div>
     </div>
 </div>
+
 <script type="text/javascript">
     $(document).ready(function (){
         $('#myForm').validate({
@@ -69,6 +69,4 @@
         });
     });
 </script>
-   
-
 @endsection

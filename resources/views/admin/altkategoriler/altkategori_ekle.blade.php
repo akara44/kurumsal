@@ -11,10 +11,11 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title"> AltKategori Ekle</h4>
+                        <h4 class="card-title">AltKategori Ekle</h4>
 
                         <form method="post" action="{{ route('altkategori.ekle.form') }}" enctype="multipart/form-data" id="myForm">
                             @csrf
+
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Kategori Seç</label>
                                 <div class="col-sm-10">
@@ -36,7 +37,6 @@
                                     @enderror
                                 </div>
                             </div>
-                            <!-- end row -->
 
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Anahtar</label>
@@ -47,7 +47,6 @@
                                     @enderror
                                 </div>
                             </div>
-                            <!-- end row -->
 
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Açıklama</label>
@@ -55,7 +54,6 @@
                                     <input class="form-control" name="aciklama" type="text" placeholder="Açıklama">
                                 </div>
                             </div>
-                            <!-- end row -->
 
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2">Resim</label>
@@ -71,7 +69,7 @@
                                 </div>
                             </div>
 
-                            <input type="submit" class="btn btn-info waves-effect waves-light" value=" Alt Kategori Ekle">
+                            <input type="submit" class="btn btn-info waves-effect waves-light" value="Alt Kategori Ekle">
                         </form>
 
                     </div>
@@ -87,78 +85,56 @@
         $('#resim').change(function(e){
             var reader = new FileReader();
             reader.onload = function(e){
-                $('#resimGoster').attr('src',e.target.result);
+                $('#resimGoster').attr('src', e.target.result);
             }
-            reader.readAsDataURL(e.target.files['0']);
+            reader.readAsDataURL(e.target.files[0]);
         });
     });
 </script>
 
-<!-- Boş olamaz no refresh -->
 <script type="text/javascript">
     $(document).ready(function (){
         $('#myForm').validate({
-            rules: 
-            {
-                altkategori_adi: 
-                {
-                    required : true,
+            rules: {
+                altkategori_adi: {
+                    required: true,
                 },
-
-                anahtar: 
-                {
-                    required : true,
+                anahtar: {
+                    required: true,
                 },
-
-                aciklama: 
-                {
-                    required : true,
+                aciklama: {
+                    required: true,
                 },
-
-                resim: 
-                {
-                    required : true,
+                resim: {
+                    required: true,
                 },
-            }, // end rules
-
-            messages :
-            {
-                altkategori_adi: 
-                {
-                    required : 'Alt Kategori adı giriniz',
+            },
+            messages: {
+                altkategori_adi: {
+                    required: 'Alt Kategori adı giriniz',
                 },
-
-                anahtar: 
-                {
-                    required : 'Anahtar giriniz',
+                anahtar: {
+                    required: 'Anahtar giriniz',
                 },
-
-                aciklama: 
-                {
-                    required : 'Açıklama giriniz',
+                aciklama: {
+                    required: 'Açıklama giriniz',
                 },
-
-                resim: 
-                {
-                    required : 'Resim giriniz',
+                resim: {
+                    required: 'Resim giriniz',
                 },
-            }, // end message 
-
-            errorElement : 'span',
-            errorPlacement: function (error,element) {
+            },
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
                 error.addClass('invalid-feedback');
                 element.closest('.form-group').append(error);
             },
-
-            highlight : function(element, errorClass, validClass){
+            highlight: function(element, errorClass, validClass){
                 $(element).addClass('is-invalid');
             },
-
-            unhighlight : function(element, errorClass, validClass){
+            unhighlight: function(element, errorClass, validClass){
                 $(element).removeClass('is-invalid');
             },
         });
     });
 </script>
-<!-- Boş olamaz no refresh -->
 @endsection

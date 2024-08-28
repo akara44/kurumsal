@@ -9,7 +9,6 @@ use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\AltKategoriController;
 use App\Http\Controllers\Admin\BlogkategoriController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,14 +23,15 @@ use App\Http\Controllers\Admin\BlogkategoriController;
 Route::get('/', function () {
     return view('frontend.index');
 });
-// banner
-Route::controller(BannerController::class)->group(function(){
+
+// Banner
+Route::controller(BannerController::class)->group(function () {
     Route::get('/banner/hepsi', 'HomeBanner')->name('banner');
     Route::post('/banner/guncelle', 'BannerGuncelle')->name('banner.guncelle');
 });
 
-// kategori
-Route::controller(KategoriController::class)->group(function(){
+// Kategori
+Route::controller(KategoriController::class)->group(function () {
     Route::get('/kategori/hepsi', 'KategoriHepsi')->name('kategori.hepsi');
     Route::get('/kategori/ekle', 'KategoriEkle')->name('kategori.ekle');
     Route::post('/kategori/ekle/form', 'KategoriEkleForm')->name('kategori.ekle.form');
@@ -41,8 +41,8 @@ Route::controller(KategoriController::class)->group(function(){
     Route::get('/kategori/durum', 'KategoriDurum');
 });
 
-// Alt kategori
-Route::controller(AltKategoriController::class)->group(function(){
+// Alt Kategori
+Route::controller(AltKategoriController::class)->group(function () {
     Route::get('/altkategori/liste', 'AltKategoriListe')->name('altkategori.liste');
     Route::get('/altkategori/ekle', 'AltKategoriEkle')->name('altkategori.ekle');
     Route::post('/altkategori/ekle/form', 'AltKategoriEkleForm')->name('altkategori.ekle.form');
@@ -54,7 +54,7 @@ Route::controller(AltKategoriController::class)->group(function(){
 });
 
 // Ürünler
-Route::controller(UrunController::class)->group(function(){
+Route::controller(UrunController::class)->group(function () {
     Route::get('/urun/liste', 'UrunListe')->name('urun.liste');
     Route::get('/urun/ekle', 'UrunEkle')->name('urun.ekle');
     Route::post('/urun/ekle/form', 'UrunEkleForm')->name('urun.ekle.form');
@@ -62,23 +62,18 @@ Route::controller(UrunController::class)->group(function(){
     Route::post('/urun/guncelle/form', 'UrunGuncelle')->name('urun.guncelle.form');
     Route::get('/urun/sil/{id}', 'UrunSil')->name('urun.sil');
     Route::get('/urun/durum', 'UrunDurum');
-
 });
-    
+
 // Bloglar
-Route::controller(BlogkategoriController::class)->group(function(){
+Route::controller(BlogkategoriController::class)->group(function () {
     Route::get('/blog/kategori/liste', 'BlogListe')->name('blog.liste');
     Route::get('/blog/kategori/ekle', 'BlogKategoriEkle')->name('blog.kategori.ekle');
     Route::post('/blog/kategori/form', 'BlogKategoriForm')->name('blog.kategori.form');
     Route::get('/blog/kategori/duzenle/{id}', 'BlogKategoriDuzenle')->name('blog.kategori.duzenle');
     Route::post('/blog/kategori/guncelle/form', 'BlogKategoriGuncelle')->name('blog.kategori.guncelle');
-    Route::get('/blog/kategori/durum    ', 'BlogKategoriDurum');
-    Route::get('/blod/kategori/sil/{id}', 'BlogKategoriSil')->name('blog.kategori.sil');
-
+    Route::get('/blog/kategori/durum', 'BlogKategoriDurum');
+    Route::get('/blog/kategori/sil/{id}', 'BlogKategoriSil')->name('blog.kategori.sil');
 });
-
-
-
 
 Route::get('/dashboard', function () {
     return view('admin.index');
@@ -92,11 +87,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-//front Controller
-
-  Route::get('/urun/{id}/{url}', [FrontController::class, 'UrunDetay']);
-  Route::get('/altkategori/{id}/{url}', [FrontController::class, 'AltDetay']);
-  Route::get('/kategori/{id}/{url}', [FrontController::class, 'KategoriDetay']);
-  
-
-
+// Front Controller
+Route::get('/urun/{id}/{url}', [FrontController::class, 'UrunDetay']);
+Route::get('/altkategori/{id}/{url}', [FrontController::class, 'AltDetay']);
+Route::get('/kategori/{id}/{url}', [FrontController::class, 'KategoriDetay']);
