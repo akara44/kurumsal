@@ -27,6 +27,7 @@
                                                 <th>Kategori Adı</th>
                                                 <th>Alt Kategori Adı</th>
                                                 <th>Resim</th>
+                                                <th>Durum</th>
                                                 <th>İşlem</th>
                                             </tr>
                                             </thead>
@@ -42,6 +43,10 @@
                                             <th>{{ $altkategori['iliskikategori']['kategori_adi'] }}</th>
                                             <th>{{ $altkategori->altkategori_adi }}</th>
                                             <th><img src="{{ (!empty($altkategori->resim)) ? url($altkategori->resim): url('upload/resim-yok.png') }}" style="height: 50px; width: 50px;" alt=""></th>
+                                           <th>
+                                        <input type="checkbox" class="altkategoriler" data-id="{{ $altkategori->id }}" id="{{ $altkategori->id }}" switch="success" {{ $altkategori->durum ? 'checked' : '' }}> 
+                                        <label for="{{ $altkategori->id }}" data-on-label="Yes" data-off-label="No"></label>
+                                            </th>
                                             <th>
                                                 <a href="{{ route('altkategori.duzenle',$altkategori->id) }}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
                                                 <a href="{{ route('altkategori.sil',$altkategori->id) }}" class="btn btn-danger sm " title="Sil" id="sil" ><i class="fas fa-trash-alt"></i></a>

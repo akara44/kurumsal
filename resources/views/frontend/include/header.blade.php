@@ -16,12 +16,12 @@
                                             <li><a href="about.html">Kurumsal</a></li>
 
 @php
- $kategoriler =App\Models\Kategoriler::orderBy('kategori_adi', 'ASC')->limit(3)->get();
+ $kategoriler =App\Models\Kategoriler::where('durum',1)->orderBy('kategori_adi', 'ASC')->limit(3)->get();
 @endphp
 @foreach($kategoriler as $kategori)
     <li class="menu-item-has-children"><a href="{{ url('kategori/'.$kategori->id.'/'.$kategori->kategori_url) }}">{{ $kategori->kategori_adi }}</a>
         @php 
-        $altkategoriler = App\Models\AltKategoriler::where('kategori_id', $kategori->id)->orderBy('altkategori_adi', 'ASC')->get();
+        $altkategoriler = App\Models\AltKategoriler::where('kategori_id', $kategori->id)->where('durum', 1)->orderBy('altkategori_adi', 'ASC')->get();
         @endphp
         <ul class="sub-menu">
             @foreach($altkategoriler as $altkategori)

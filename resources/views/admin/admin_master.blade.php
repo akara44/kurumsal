@@ -197,5 +197,41 @@
             });
         });
         </script>
+
+        <script>
+        $(function() {
+            $('.altkategoriler').change(function(){
+                var durum = $(this).prop('checked') == true ? 1 : 0;
+                var urun_id = $(this).data('id');
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: '/altkategoriler/durum',
+                    data: {'durum': durum, 'urun_id': urun_id},
+                    success: function(data){
+                        console.log(data.success);
+                    }
+                });
+            });
+        });
+        </script>   
+
+        <script>
+        $(function() {
+            $('.kategoriler').change(function(){
+                var durum = $(this).prop('checked') == true ? 1 : 0;
+                var urun_id = $(this).data('id');
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: '/kategori/durum',
+                    data: {'durum': durum, 'urun_id': urun_id},
+                    success: function(data){
+                        console.log(data.success);
+                    }
+                });
+            });
+        });
+        </script>
     </body>
 </html>

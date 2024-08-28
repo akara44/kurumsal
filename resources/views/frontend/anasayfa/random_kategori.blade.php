@@ -1,5 +1,5 @@
 @php
-$kategoriler = App\Models\Kategoriler::orderBy('kategori_adi', 'DESC')->get();
+$kategoriler = App\Models\Kategoriler::where('durum',1)->orderBy('kategori_adi', 'DESC')->get();
 @endphp
 <section class="services">
                 <div class="container">

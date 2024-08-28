@@ -14,6 +14,13 @@ class KategoriController extends Controller
         $kategorihepsi = Kategoriler::latest()->get();
         return view('admin.kategoriler.kategoriler_hepsi', compact('kategorihepsi'));
     }
+      public function KategoriDurum(Request $request){
+        $urun = Kategoriler::find($request->urun_id);
+        $urun->durum = $request->durum;
+        $urun->save();
+        
+        return response()->json(['success' => 'Başarılı.']);
+    }
 
     public function KategoriEkle(){
         return view('admin.kategoriler.kategori_ekle');
@@ -48,6 +55,7 @@ class KategoriController extends Controller
                     'anahtar' => $request->anahtar,
                     'aciklama' => $request->aciklama,
                     'resim' => $resim_kaydet,
+                     'durum' => 1,
                     'created_at' => Carbon::now(),
                 ]);
     

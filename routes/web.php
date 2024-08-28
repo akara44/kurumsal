@@ -38,6 +38,7 @@ Route::controller(KategoriController::class)->group(function(){
     Route::get('/kategori/duzenle/{id}', 'KategoriDuzenle')->name('kategori.duzenle');
     Route::post('/kategori/guncelle/form', 'KategoriGuncelleForm')->name('kategori.guncelle.form');
     Route::get('/kategori/sil/{id}', 'KategoriSil')->name('kategori.sil');
+    Route::get('/kategori/durum', 'KategoriDurum');
 });
 
 // Alt kategori
@@ -49,6 +50,7 @@ Route::controller(AltKategoriController::class)->group(function(){
     Route::post('/altkategori/guncelle/form', 'AltKategoriForm')->name('alt.guncelle');
     Route::get('/altkategori/sil/{id}', 'AltKategoriSil')->name('altkategori.sil');
     Route::get('/altkategoriler/ajax/{kategori_id}', 'AltAjax');
+    Route::get('/altkategoriler/durum', 'AltkategoriDurum');
 });
 
 // Ürünler

@@ -25,6 +25,14 @@ class AltKategoriController extends Controller
         return view('admin.altkategoriler.altkategori_liste', compact('altkategoriler'));
     }
 
+        public function AltkategoriDurum(Request $request){
+        $urun = Altkategoriler::find($request->urun_id);
+        $urun->durum = $request->durum;
+        $urun->save();
+        
+        return response()->json(['success' => 'Başarılı.']);
+    }
+
     public function AltKategoriEkle(){
         $kategorigoster = Kategoriler::orderBy('kategori_adi', 'ASC')->get();
         return view('admin.altkategoriler.altkategori_ekle', compact('kategorigoster'));
@@ -54,6 +62,7 @@ class AltKategoriController extends Controller
                     'anahtar' => $request->anahtar,
                     'aciklama' => $request->aciklama,
                     'resim' => $resim_kaydet,
+                    'durum' => 1,
                     'created_at' => Carbon::now(),
                 ]);
 
