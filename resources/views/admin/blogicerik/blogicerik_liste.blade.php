@@ -36,15 +36,15 @@
                                 <tr>
                                     <th>{{ $loop->iteration }}</th>
                                     <th>{{ $icerikler->baslik }}</th>
-                                    <th><!--{{ $urunler->Altkategori ? $urunler->Altkategori->altkategori_adi : 'Alt kategori bulunamadı' }}--></th>
+                                    <th>Kategori Adı</th>
                                     <th><img src="{{ (!empty($icerikler->resim)) ? url($icerikler->resim) : url('upload/resim-yok.png') }}" style="height: 50px; width: 50px;" alt=""></th>
                                     <th>
-                                        <input type="checkbox" class="metinler" data-id="{{ $icerikler->id }}" id="{{ $icerikler->id }}" switch="success" {{ $urunler->durum ? 'checked' : '' }}> 
+                                        <input type="checkbox" class="metinler" data-id="{{ $icerikler->id }}" id="{{ $icerikler->id }}" switch="success" {{ $icerikler->durum ? 'checked' : '' }}> 
                                         <label for="{{ $icerikler->id }}" data-on-label="Yes" data-off-label="No"></label>
                                     </th>
                                     <th>
-                                        <a href="{{ route('urun.duzenle', $urunler->id) }}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
-                                        <a href="{{ route('urun.sil', $urunler->id) }}" class="btn btn-danger sm" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="{{ route('blog.icerik.duzenle', $icerikler->id) }}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
+                                        <a href="{{ route('urun.sil', $icerikler->id) }}" class="btn btn-danger sm" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
                                     </th>
                                 </tr>
                                 @endforeach

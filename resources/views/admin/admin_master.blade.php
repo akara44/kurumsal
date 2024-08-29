@@ -256,7 +256,7 @@
         handleCheckboxChange('.icerikler', '/blog/kategori/durum');
         handleCheckboxChange('.altkategoriler', '/altkategoriler/durum');
         handleCheckboxChange('.kategoriler', '/kategori/durum');
-        // handleCheckboxChange('.metinler', '/kategori/durum');
+        handleCheckboxChange('.metinler', '/blog/icerik/durum');
     });
 </script>
     </body>

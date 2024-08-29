@@ -18,8 +18,8 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Ürün Ekle</h4>
-                        <form method="post" action="{{ route('urun.ekle.form') }}" enctype="multipart/form-data" id="myForm">
+                        <h4 class="card-title">İçerik Ekle</h4>
+                        <form method="post" action="{{ route('blog.icerik.ekle.form') }}" enctype="multipart/form-data" id="myForm">
                             @csrf
                             <div class="col-md-12">
                                 <div class="row">
@@ -37,7 +37,7 @@
                                         <div class="row mb-3">
                                             <label for="example-text-input" class="col-sm-2 col-form-label">Tag</label>
                                             <div class="col-sm-12 form-group">
-                                                <input class="form-control" name="tag" type="text" data-role="tagsinput" value="Editör,Laravel">
+                                                <input class="form-control" name="tag" type="text" data-role="tagsinput" value="Editör">
                                             </div>
                                         </div>
 
@@ -59,18 +59,6 @@
                                                         <option value="{{ $kategori->id }}">{{ $kategori->kategori_adi }}</option>
                                                     @endforeach
                                                 </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="example-text-input" class="col-form-label">Alt Kategori Adı</label>
-                                            <div class="col-sm-12 form-group">
-                                                <select class="form-select" aria-label="default select example" name="altkategori_id">
-                                                    <option></option>
-                                                </select>
-                                                @error('altkategori_adi')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
                                             </div>
                                         </div>
 
@@ -110,7 +98,7 @@
                                         </div>
                                     </div>
 
-                                    <input type="submit" class="btn btn-info waves-effect waves-light" value="Ürün Ekle">
+                                    <input type="submit" class="btn btn-info waves-effect waves-light" value="İçerik Ekle">
                                 </div>
                             </div>
                         </form>
@@ -137,7 +125,7 @@
     $(document).ready(function (){
         $('#myForm').validate({
             rules: {
-                altkategori_id: {
+                sirano: {
                     required: true,
                 },
                 resim: {
@@ -145,8 +133,8 @@
                 },
             },
             messages: {
-                altkategori_id: {
-                    required: 'Alt Kategori Seçiniz.',
+                sirano: {
+                    required: 'Sıra No Giriniz.',
                 },
                 resim: {
                     required: 'Resim Seçiniz.',
@@ -165,30 +153,5 @@
             },
         });
     });
-</script>
-   
-<script>
-     $(document).ready(
-        function(params) {
-            $('select[name="kategori_id"]').on('change', function() {
-                var kategori_id = $(this).val();
-                if (kategori_id) {
-                    $.ajax({
-                        url: "{{ url('/altkategoriler/ajax') }}/" + kategori_id,
-                        type: "GET",
-                        dataType: "json",
-                        success:function(data) {
-                            $('select[name="altkategori_id"]').html('');
-                            var alt = $('select[name="altkategori_id"]').empty();
-                            $.each(data,function(key, value) {
-                                $('select[name="altkategori_id"]').append('<option value="'+ value.id +'"> '+ value.altkategori_adi +'</option>');
-                            });
-                        },
-                    });
-                }else{
-                    alert('danger');
-                }
-            })
-    })
 </script>
 @endsection

@@ -75,7 +75,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li><a href="{{ route('icerik.liste') }}">Liste</a></li>
-                        <li><a href="{{ route('blog.kategori.ekle') }}">İçerik Ekle</a></li>
+                        <li><a href="{{ route('blog.icerik.ekle') }}">İçerik Ekle</a></li>
                     </ul>
                 </li>
                 

@@ -82,7 +82,11 @@ Route::controller(BlogkategoriController::class)->group(function () {
 
 Route::controller(BlogicerikController::class)->group(function () {
     Route::get('/icerik/liste', 'İcerikListe')->name('icerik.liste');
-    Route::get('/blog/kategori/ekle', 'BlogicerikEkle')->name('blog.icerik.ekle');
+    Route::get('/blog/icerik/ekle', 'BlogicerikEkle')->name('blog.icerik.ekle');
+    Route::post('/blog/icerik/ekle/form', 'BlogicerikForm')->name('blog.icerik.ekle.form');
+    Route::get('/blog/icerik/durum', 'BlogicerikDurum');
+
+    
 });
 
 Route::get('/dashboard', function () {
