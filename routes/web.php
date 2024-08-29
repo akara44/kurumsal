@@ -85,8 +85,9 @@ Route::controller(BlogicerikController::class)->group(function () {
     Route::get('/blog/icerik/ekle', 'BlogicerikEkle')->name('blog.icerik.ekle');
     Route::post('/blog/icerik/ekle/form', 'BlogicerikForm')->name('blog.icerik.ekle.form');
     Route::get('/blog/icerik/durum', 'BlogicerikDurum');
-
-    
+    Route::get('/blog/icerik/duzenle/{id}', 'BlogicerikDuzenle')->name('blog.icerik.duzenle');
+    Route::post('/blog/icerik/guncelle/form', 'BlogicerikGuncelleForm')->name('blog.icerik.guncelle.form');
+  
 });
 
 Route::get('/dashboard', function () {

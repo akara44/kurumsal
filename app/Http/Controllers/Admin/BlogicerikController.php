@@ -63,6 +63,83 @@ class BlogicerikController extends Controller
                 ];
 
             return redirect()->route('icerik.liste')->with($mesaj);
-        }   
+        }  
+
+        public function BlogicerikDuzenle($id){
+            $kategoriler = Blogkategoriler::latest()->get();
+            $icerikler = Blogicerik::findOrFail($id);
+            return view('admin.blogicerik.blogicerik_duzenle',compact('kategoriler', 'icerikler' ));
+        }
+
+
+        public function BlogicerikGuncelleForm(Request $request){
+            $request->validate([
+                'baslik' => 'required'
+            ],[
+                'baslik.required' => 'Başlık Boş Olamaz.',
+            ]);
+                $urun_id = $request->id;
+                $eski_resim = $request->onceki_resim;
+
+            if ($request->hasFile('resim')) {
+                $resim = $request->file('resim');
+                $resimadi = hexdec(uniqid()).'.'.$resim->getClientOriginalExtension();
     
+                // 'upload/banner' path should have a trailing slash
+                $resim_path = 'upload/blogicerik/'.$resimadi;
+    
+                // Save the resized image
+                Image::make($resim)->resize(1020, 519)->save($resim_path);
+    
+                $resim_kaydet = $resim_path;
+
+                // eski resmi sil
+                    if (file_exists($eski_resim)) {
+                        unlink($eski_resim);
+                    }
+                // eski resmi sil
+    
+                // Update banner with image
+                Blogicerik::findOrFail($urun_id)->update([
+                 'kategori_id' => $request->kategori_id,
+                    'baslik' => $request->baslik,
+                    'url' => \Str::slug($request->baslik),
+                    'tag' => $request->tag,
+                    'metin' => $request->metin,
+                    'anahtar' => $request->anahtar,
+                    'aciklama' => $request->aciklama,
+                    'sirano' => $request->sirano,
+                    'resim' => $resim_kaydet,
+                ]);
+    
+                $mesaj = [
+                    'bildirim' => 'Resim ile Güncelleme başarılı.',
+                    'alert-type' => 'success'
+                ];
+                
+                return Redirect()->route('icerik.liste')->with($mesaj);
+            } else {
+                // Update banner without image
+                Blogicerik::findOrFail($urun_id)->update([
+                     'kategori_id' => $request->kategori_id,
+                    'baslik' => $request->baslik,
+                    'url' => \Str::slug($request->baslik),
+                    'tag' => $request->tag,
+                    'metin' => $request->metin,
+                    'anahtar' => $request->anahtar,
+                    'aciklama' => $request->aciklama,
+                    'sirano' => $request->sirano,
+                ]);
+    
+                $mesaj = [
+                    'bildirim' => 'Resimsiz Güncelleme başarılı.',
+                    'alert-type' => 'success'
+                ];
+                
+                return Redirect()->route('icerik.liste')->with($mesaj);
+            }   
+        } 
+
+        
+          
 }
