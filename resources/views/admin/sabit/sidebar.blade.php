@@ -67,6 +67,17 @@
                         <li><a href="{{ route('blog.kategori.ekle') }}">Blog Kategori Ekle</a></li>
                     </ul>
                 </li>
+
+                 <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-layout-3-line"></i>
+                        <span>Blog İçerikleri</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{ route('icerik.liste') }}">Liste</a></li>
+                        <li><a href="{{ route('blog.kategori.ekle') }}">İçerik Ekle</a></li>
+                    </ul>
+                </li>
                 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
