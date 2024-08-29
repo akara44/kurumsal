@@ -6,8 +6,11 @@ use App\Http\Controllers\Admin\UrunController;
 use App\Http\Controllers\Home\FrontController;
 use App\Http\Controllers\Home\BannerController;
 use App\Http\Controllers\Admin\KategoriController;
+use App\Http\Controllers\Admin\BlogicerikController;
 use App\Http\Controllers\Admin\AltKategoriController;
 use App\Http\Controllers\Admin\BlogkategoriController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +76,13 @@ Route::controller(BlogkategoriController::class)->group(function () {
     Route::post('/blog/kategori/guncelle/form', 'BlogKategoriGuncelle')->name('blog.kategori.guncelle');
     Route::get('/blog/kategori/durum', 'BlogKategoriDurum');
     Route::get('/blog/kategori/sil/{id}', 'BlogKategoriSil')->name('blog.kategori.sil');
+});
+
+//Blog İçerkleri
+
+Route::controller(BlogicerikController::class)->group(function () {
+    Route::get('/icerik/liste', 'İcerikListe')->name('icerik.liste');
+    Route::get('/blog/kategori/ekle', 'BlogicerikEkle')->name('blog.icerik.ekle');
 });
 
 Route::get('/dashboard', function () {
