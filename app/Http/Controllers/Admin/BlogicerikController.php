@@ -140,6 +140,26 @@ class BlogicerikController extends Controller
             }   
         } 
 
+         public function BlogicerikSil($id){
+            $urun = Blogicerik::findOrFail($id);
+        
+            // Resmi siler
+            $resim = $urun->resim;
+            if (file_exists($resim)) {
+                unlink($resim);
+            }
+        
+            // Veritabanındaki verileri siler
+            $urun->delete();
+        
+            $mesaj = [
+                'bildirim' => 'Silme Başarılı.',
+                'alert-type' => 'success'
+            ];
+        
+            return Redirect()->back()->with($mesaj);
+        }
+
         
           
 }

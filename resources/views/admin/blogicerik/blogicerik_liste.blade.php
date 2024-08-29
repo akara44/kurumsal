@@ -44,7 +44,7 @@
                                     </th>
                                     <th>
                                         <a href="{{ route('blog.icerik.duzenle', $icerikler->id) }}" class="btn btn-info sm m-2" title="Düzenle"><i class="fas fa-edit"></i></a>
-                                        <a href="{{ route('urun.sil', $icerikler->id) }}" class="btn btn-danger sm" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="{{ route('blog.icerik.sil', $icerikler->id) }}" class="btn btn-danger sm" title="Sil" id="sil"><i class="fas fa-trash-alt"></i></a>
                                     </th>
                                 </tr>
                                 @endforeach
