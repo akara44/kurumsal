@@ -36,7 +36,7 @@
                                 <tr>
                                     <th>{{ $loop->iteration }}</th>
                                     <th>{{ $icerikler->baslik }}</th>
-                                    <th>Kategori Adı</th>
+                                    <th>{{ $icerikler['kategoriler']['kategori_adi'] }}</th>
                                     <th><img src="{{ (!empty($icerikler->resim)) ? url($icerikler->resim) : url('upload/resim-yok.png') }}" style="height: 50px; width: 50px;" alt=""></th>
                                     <th>
                                         <input type="checkbox" class="metinler" data-id="{{ $icerikler->id }}" id="{{ $icerikler->id }}" switch="success" {{ $icerikler->durum ? 'checked' : '' }}> 

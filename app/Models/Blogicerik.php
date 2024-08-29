@@ -9,4 +9,8 @@ class Blogicerik extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+     public function kategoriler(){
+        return $this->belongsTo(Blogkategoriler::class , 'kategori_id', 'id');
+    }
 }
