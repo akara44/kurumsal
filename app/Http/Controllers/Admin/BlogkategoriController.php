@@ -36,7 +36,7 @@ class BlogkategoriController extends Controller
 
                 Blogkategoriler::insert([
                     'kategori_adi' => $request->kategori_adi,
-                    'url' => $request->url,
+                     'url' => str()->slug($request->kategori_adi),
                     'sirano' => $request->sirano,
                     'durum' => 1,
                     'created_at' => Carbon::now(),
@@ -65,7 +65,7 @@ class BlogkategoriController extends Controller
                 // Update banner with image
                Blogkategoriler::findOrFail($kategori_id)->update([
                     'kategori_adi' => $request->kategori_adi,
-                    'url' => $request->url,
+                    'url' => str()->slug($request->kategori_adi),
                     'sirano' => $request->sirano,
                 ]);
     
