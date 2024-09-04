@@ -40,7 +40,7 @@ class BlogicerikController extends Controller
                 $resim = $request->file('resim');
                 $resimadi = hexdec(uniqid()) . '.' . $resim->getClientOriginalExtension();
                 $resim_path = 'upload/blogicerik/' . $resimadi;
-                Image::make($resim)->resize(700, 370)->save($resim_path);
+                Image::make($resim)->resize(430, 327)->save($resim_path);
                 $resim_kaydet = $resim_path;
 
                 Blogicerik::insert([
@@ -89,7 +89,7 @@ class BlogicerikController extends Controller
                 $resim_path = 'upload/blogicerik/'.$resimadi;
     
                 // Save the resized image
-                Image::make($resim)->resize(1020, 519)->save($resim_path);
+                Image::make($resim)->resize(430, 327)->save($resim_path);
     
                 $resim_kaydet = $resim_path;
 

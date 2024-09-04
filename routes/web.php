@@ -108,3 +108,4 @@ require __DIR__.'/auth.php';
 Route::get('/urun/{id}/{url}', [FrontController::class, 'UrunDetay']);
 Route::get('/altkategori/{id}/{url}', [FrontController::class, 'AltDetay']);
 Route::get('/kategori/{id}/{url}', [FrontController::class, 'KategoriDetay']);
+Route::get('/post/{id}/{url}', [FrontController::class, 'İcerikDetay']);

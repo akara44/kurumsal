@@ -7,6 +7,8 @@ use App\Models\Altkategoriler;
 use Illuminate\Http\Request;
 use App\Models\Kategoriler;
 use App\Models\Urunler;
+use App\Models\Blogicerik;
+use App\Models\Blogkategoriler;
 
 
 
@@ -38,5 +40,14 @@ class FrontController extends Controller
 
         return view('frontend.urunler.altkategori_detay',compact('urunler','altkategoriler','altkategori'));
 
+    }
+
+    public function İcerikDetay($id){
+        $icerikHepsi =Blogicerik::where('durum',1)->orderBy('sirano','ASC')->limit(5)->get();
+        $icerik = Blogicerik::findOrFail($id);
+        $kategoriler = Blogkategoriler::where('durum',1)->orderBy('sirano','ASC')->get();
+        $etiket = $icerik->tag;
+        $etiketler = explode(',',$etiket);
+        return view('frontend.blog.icerik_detay',compact('icerikHepsi','icerik','kategoriler','etiketler'));
     }
 } //class bitti
