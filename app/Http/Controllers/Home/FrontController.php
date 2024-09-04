@@ -50,4 +50,16 @@ class FrontController extends Controller
         $etiketler = explode(',',$etiket);
         return view('frontend.blog.icerik_detay',compact('icerikHepsi','icerik','kategoriler','etiketler'));
     }
+
+
+    public function KategoriBlog($id){
+        $blogpost =Blogicerik::where('durum',1)->where('kategori_id',$id)->orderBy('sirano','ASC')->get();
+        $icerikHepsi =Blogicerik::where('durum',1)->orderBy('sirano','ASC')->get();
+        $kategoriler = Blogkategoriler::where('durum',1)->orderBy('sirano','ASC')->get();
+        $kategoriAdi = Blogkategoriler::findOrFail($id);
+        return view('frontend.blog.kategori_detay',compact('blogpost','icerikHepsi','kategoriler','kategoriAdi'));
+    }
+
+
+
 } //class bitti
