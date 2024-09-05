@@ -8,7 +8,7 @@
                                 <h2 class="title">{{ $kategoriAdi->kategori_adi }}</h2>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Blog</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ url('/blog') }}">Blog</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">{{ $kategoriAdi->kategori_adi }}</li>
                                     </ol>
                                 </nav>

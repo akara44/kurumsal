@@ -46,8 +46,12 @@
                                     <li class="menu-item-has-children">
                                         <a href="{{url('/blog')}}">Blog</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{{url('/blog')}}">Blog</a></li>
-                                            <li><a href="blog-details.html">News Details</a></li>
+                                            @php
+                                            $kategoriler = App\Models\Blogkategoriler::where('durum', 1)->orderBy('sirano', 'ASC')->get();    
+                                            @endphp
+                                            @foreach($kategoriler as $kategori)
+                                            <li><a href="{{ url('blog/'.$kategori->id.'/'.$kategori->url) }}">{{ $kategori->kategori_adi }}</a></li>
+                                            @endforeach
                                         </ul>
                                     </li>
                                     <li><a href="contact.html">İletişim</a></li>
