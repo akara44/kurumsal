@@ -45,7 +45,7 @@
                                     <h2 class="title"><a href="{{ url('post/'.$icerikler->id.'/'.$icerikler->url) }}">{{ $icerikler->baslik }}</a></h2>
                                     <p>{!! Str::limit($icerikler->metin ,200) !!}</p>
                                     <ul class="blog__post__meta">
-                                        <li><i class="fal fa-calendar-alt"></i>{{ $icerikler->created_at- }}</li>
+                                        <li><i class="fal fa-calendar-alt"></i>{{ $icerikler->created_at }}</li>
                                     </ul>
                                 </div>
                             </div>
