@@ -53,7 +53,7 @@ class FrontController extends Controller
 
 
     public function KategoriBlog($id){
-        $blogpost =Blogicerik::where('durum',1)->where('kategori_id',$id)->orderBy('sirano','ASC')->get();
+        $blogpost =Blogicerik::where('durum',1)->where('kategori_id',$id)->orderBy('sirano','ASC')->paginate(2);
         $icerikHepsi =Blogicerik::where('durum',1)->orderBy('sirano','ASC')->get();
         $kategoriler = Blogkategoriler::where('durum',1)->orderBy('sirano','ASC')->get();
         $kategoriAdi = Blogkategoriler::findOrFail($id);
@@ -62,7 +62,7 @@ class FrontController extends Controller
 
     public function BlogHepsi(){
         $kategoriler =Blogkategoriler::where('durum',1)->orderBy('sirano','ASC')->get();
-        $icerikHepsi =Blogicerik::where('durum',1)->orderBy('sirano','ASC');
+        $icerikHepsi =Blogicerik::where('durum',1)->orderBy('sirano','ASC')->paginate(2);
         return view('frontend.blog.blog_hepsi',compact('kategoriler','icerikHepsi'));
     }
 
