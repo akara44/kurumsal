@@ -76,8 +76,7 @@ class BlogkategoriController extends Controller
                 
                 return Redirect()->route('blog.liste')->with($mesaj);
         
-        }   
-
+        }    
                 public function  BlogKategoriSil($id){
                             Blogkategoriler::findOrFail($id)->delete();
                             $mesaj = [
