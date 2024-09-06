@@ -43,18 +43,17 @@ class BlogicerikController extends Controller
                 Image::make($resim)->resize(430, 327)->save($resim_path);
                 $resim_kaydet = $resim_path;
 
-                Blogicerik::insert([
+                Blogicerik::create([
                     'kategori_id' => $request->kategori_id,
                     'baslik' => $request->baslik,
-                    'url' => \Str::slug($request->baslik),
+                
                     'tag' => $request->tag,
                     'metin' => $request->metin,
                     'anahtar' => $request->anahtar,
                     'aciklama' => $request->aciklama,
                     'sirano' => $request->sirano,
                     'resim' => $resim_kaydet,
-                    'durum' => 1,
-                    'created_at' => Carbon::now(),
+                    'durum' => 1,     
                 ]);
 
                 $mesaj = [
@@ -66,8 +65,8 @@ class BlogicerikController extends Controller
         }  
 
         public function BlogicerikDuzenle($id){
+              $icerikler = Blogicerik::findOrFail($id);
             $kategoriler = Blogkategoriler::latest()->get();
-            $icerikler = Blogicerik::findOrFail($id);
             return view('admin.blogicerik.blogicerik_duzenle',compact('kategoriler', 'icerikler' ));
         }
 
@@ -103,7 +102,7 @@ class BlogicerikController extends Controller
                 Blogicerik::findOrFail($urun_id)->update([
                  'kategori_id' => $request->kategori_id,
                     'baslik' => $request->baslik,
-                    'url' => \Str::slug($request->baslik),
+                
                     'tag' => $request->tag,
                     'metin' => $request->metin,
                     'anahtar' => $request->anahtar,
@@ -123,7 +122,6 @@ class BlogicerikController extends Controller
                 Blogicerik::findOrFail($urun_id)->update([
                      'kategori_id' => $request->kategori_id,
                     'baslik' => $request->baslik,
-                    'url' => \Str::slug($request->baslik),
                     'tag' => $request->tag,
                     'metin' => $request->metin,
                     'anahtar' => $request->anahtar,

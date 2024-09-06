@@ -62,7 +62,7 @@ class FrontController extends Controller
 
     public function BlogHepsi(){
         $kategoriler =Blogkategoriler::where('durum',1)->orderBy('sirano','ASC')->get();
-        $icerikHepsi =Blogicerik::where('durum',1)->orderBy('sirano','ASC')->get();
+        $icerikHepsi =Blogicerik::where('durum',1)->orderBy('sirano','ASC')->paginate(2);
         return view('frontend.blog.blog_hepsi',compact('kategoriler','icerikHepsi'));
     }
 

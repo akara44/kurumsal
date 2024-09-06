@@ -45,7 +45,7 @@
                                     <h2 class="title"><a href="{{ url('post/'.$icerikler->id.'/'.$icerikler->url) }}">{{ $icerikler->baslik }}</a></h2>
                                     <p>{!! Str::limit($icerikler->metin ,200) !!}</p>
                                     <ul class="blog__post__meta">
-                                        <li><i class="fal fa-calendar-alt"></i>{{ $icerikler->created_at->tz('Europe/Istanbul')->format('d.m.Y') }}</li>
+                                        <li><i class="fal fa-calendar-alt"></i>{{ $icerikler->created_at- }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                                             </div>
                                             <div class="rc__post__content">
                                                 <h5 class="title"><a href="{{ url('post/'.$metinler->id.'/'.$metinler->url) }}">{{ $metinler->baslik }}</a></h5>
-                                                <span class="post-date"><i class="fal fa-calendar-alt"></i>{{ $metinler->created_at->tz('Europe/Istanbul')->format('d.m.Y') }}</span>
+                                                <span class="post-date"><i class="fal fa-calendar-alt"></i>{{ $metinler->created_at }}</span>
                                             </div>
                                         </li>
                                     @endforeach

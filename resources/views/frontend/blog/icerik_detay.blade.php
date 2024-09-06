@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="blog__details__content services__details__content">
                                     <ul class="blog__post__meta">
-                                        <li><i class="fal fa-calendar-alt"></i>{{ $icerik->created_at->tz('Europe/Istanbul')->format('d.m.Y') }}</li>
+                                        <li><i class="fal fa-calendar-alt"></i>{{ $icerik->created_at }}</li>
                                     </ul>
                                     <h1 class="title">{{ $icerik->baslik }}</h1>
                                     <p>{!! $icerik->metin !!}</p>
@@ -111,7 +111,7 @@
                                             </div>
                                             <div class="rc__post__content">
                                                 <h5 class="title"><a href="{{ url('post/'.$icerikler->id.'/'.$icerikler->url) }}">{{ $icerikler->baslik }}</a></h5>
-                                                <span class="post-date"><i class="fal fa-calendar-alt"></i>{{ $icerikler->created_at->tz('Europe/Istanbul')->format('d.m.Y') }}</span>
+                                                <span class="post-date"><i class="fal fa-calendar-alt"></i>{{ $icerikler->created_at }}</span>
                                             </div>
                                         </li>
                                         @endforeach

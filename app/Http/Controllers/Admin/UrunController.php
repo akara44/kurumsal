@@ -47,11 +47,11 @@ class UrunController extends Controller
                 Image::make($resim)->resize(1020, 519)->save($resim_path);
                 $resim_kaydet = $resim_path;
 
-                Urunler::insert([
+                Urunler::create([
                     'kategori_id' => $request->kategori_id,
                     'altkategori_id' => $request->altkategori_id,
                     'baslik' => $request->baslik,
-                    'url' => \Str::slug($request->baslik),
+                   
                     'tag' => $request->tag,
                     'metin' => $request->metin,
                     'anahtar' => $request->anahtar,
@@ -59,7 +59,6 @@ class UrunController extends Controller
                     'sirano' => $request->sirano,
                     'resim' => $resim_kaydet,
                     'durum' => 1,
-                    'created_at' => Carbon::now(),
                 ]);
 
                 $mesaj = [
@@ -109,7 +108,7 @@ class UrunController extends Controller
                  'kategori_id' => $request->kategori_id,
                     'altkategori_id' => $request->altkategori_id,
                     'baslik' => $request->baslik,
-                    'url' => \Str::slug($request->baslik),
+                    
                     'tag' => $request->tag,
                     'metin' => $request->metin,
                     'anahtar' => $request->anahtar,

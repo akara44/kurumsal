@@ -55,7 +55,7 @@ class AltKategoriController extends Controller
                 Image::make($resim)->resize(700, 400)->save($resim_path);
                 $resim_kaydet = $resim_path;
 
-                AltKategoriler::insert([
+                AltKategoriler::create([
                     'kategori_id' => $request->kategori_id,
                     'altkategori_adi' => $request->altkategori_adi,
                     'altkategori_url' => \Str::slug($request->altkategori_adi),
@@ -63,7 +63,6 @@ class AltKategoriController extends Controller
                     'aciklama' => $request->aciklama,
                     'resim' => $resim_kaydet,
                     'durum' => 1,
-                    'created_at' => Carbon::now(),
                 ]);
 
                 $mesaj = [
@@ -71,13 +70,12 @@ class AltKategoriController extends Controller
                     'alert-type' => 'success'
                 ];
             } else {
-                AltKategoriler::insert([
+                AltKategoriler::create([
                     'kategori_id' => $request->kategori_id,
                     'altkategori_adi' => $request->altkategori_adi,
                     'altkategori_url' => \Str::slug($request->altkategori_adi),
                     'anahtar' => $request->anahtar,
                     'aciklama' => $request->aciklama,
-                    'created_at' => Carbon::now(),
                 ]);
 
                 $mesaj = [

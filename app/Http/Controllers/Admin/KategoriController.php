@@ -49,14 +49,13 @@ class KategoriController extends Controller
                 $resim_kaydet = $resim_path;
     
                 // Update banner with image
-                Kategoriler::insert([
+                Kategoriler::create([
                     'kategori_adi' => $request->kategori_adi,
                     'kategori_url' => str()->slug($request->kategori_adi),
                     'anahtar' => $request->anahtar,
                     'aciklama' => $request->aciklama,
                     'resim' => $resim_kaydet,
                      'durum' => 1,
-                    'created_at' => Carbon::now(),
                 ]);
     
                 $mesaj = [

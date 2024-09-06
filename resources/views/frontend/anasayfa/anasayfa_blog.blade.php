@@ -17,7 +17,7 @@ $icerikler = App\Models\Blogicerik::where('durum',1)->orderBy('sirano','ASC')->l
                                     </div>
                                 </div>
                                 <div class="blog__post__content">
-                                    <span class="date">{{ $metinler->created_at->tz('Europe/Istanbul')->format('d.m.Y') }}</span>
+                                    <span class="date">{{ $metinler->created_at }}</span>
                                     <h3 class="title"><a href="{{ url('post/'.$metinler->id.'/'.$metinler->url) }}">{{ $metinler->baslik }}</a></h3>
                                     <a href="{{ url('post/'.$metinler->id.'/'.$metinler->url) }}" class="read__more">Devamı</a>
                                 </div>

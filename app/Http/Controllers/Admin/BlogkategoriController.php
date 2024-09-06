@@ -34,12 +34,11 @@ class BlogkategoriController extends Controller
             'kategori_adi.required' => 'Başlık Alanı Boş Olamaz.',
         ]);
 
-                Blogkategoriler::insert([
+                Blogkategoriler::create([
                     'kategori_adi' => $request->kategori_adi,
-                     'url' => str()->slug($request->kategori_adi),
+                    
                     'sirano' => $request->sirano,
                     'durum' => 1,
-                    'created_at' => Carbon::now(),
                 ]);
 
                 $mesaj = [
@@ -65,7 +64,7 @@ class BlogkategoriController extends Controller
                 // Update banner with image
                Blogkategoriler::findOrFail($kategori_id)->update([
                     'kategori_adi' => $request->kategori_adi,
-                    'url' => str()->slug($request->kategori_adi),
+                    
                     'sirano' => $request->sirano,
                 ]);
     
