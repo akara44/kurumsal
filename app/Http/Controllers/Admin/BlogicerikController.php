@@ -41,12 +41,11 @@ class BlogicerikController extends Controller
                 $resimadi = hexdec(uniqid()) . '.' . $resim->getClientOriginalExtension();
                 $resim_path = 'upload/blogicerik/' . $resimadi;
                 Image::make($resim)->resize(430, 327)->save($resim_path);
-                $resim_kaydet = $resim_path;
-
+               $resim_kaydet = $resim_path;
+ 
                 Blogicerik::create([
                     'kategori_id' => $request->kategori_id,
                     'baslik' => $request->baslik,
-                
                     'tag' => $request->tag,
                     'metin' => $request->metin,
                     'anahtar' => $request->anahtar,
